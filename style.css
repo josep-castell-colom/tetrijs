@@ -1,6 +1,6 @@
 #board {
-  width: 200px;
-  height: 400px;
+  width: 500px;
+  height: 1000px;
   background-color: #333;
   border: solid 2px black;
 }
