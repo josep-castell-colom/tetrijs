@@ -1,8 +1,15 @@
-const url = "http://localhost:3000/";
+const url = 'http://localhost:3000/';
 
 export function fetchScores() {
   const scores = fetch(`${url}scores`)
-    .then((res) => res.json())
-    .catch((err) => console.log(err));
+    .then(res => res.json())
+    .catch(err => console.log(err));
   return scores;
+}
+
+export async function postScore(data) {
+  fetch(`${url}scores`, {
+    method: 'POST',
+    body: JSON.stringify(data),
+  }).catch(err => console.log(err));
 }

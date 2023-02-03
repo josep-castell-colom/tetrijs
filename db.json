@@ -5,7 +5,10 @@
       "player": "Josep",
       "score": "999999",
       "level": 1000,
-      "rowsCleared": 1000
+      "clearedLines": 1000
+    },
+    {
+      "id": 2
     }
   ]
 }
