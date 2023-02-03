@@ -47,6 +47,10 @@ body {
   box-shadow: 5px 5px #333;
 }
 
+#wrapper {
+  max-height: 1080px;
+}
+
 #title {
   height: fit-content;
   margin-right: 2rem;

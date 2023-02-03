@@ -1,6 +1,6 @@
-import { getCoordenates } from '../main.js';
-import { settings } from '../settings.js';
-import { board } from './board.js';
+import { getCoordenates } from "./piecesControls.js";
+import { settings } from "../settings.js";
+import { board } from "./board.js";
 
 export const matrix = [];
 
@@ -17,13 +17,13 @@ export function initMatrix() {
 
 export function resetMatrix() {
   initMatrix();
-  board.stack.forEach(piece => {
+  board.stack.forEach((piece) => {
     fillMatrix(getCoordenates(piece));
   });
 }
 
 export function fillMatrix(piece) {
-  piece.forEach(block => {
+  piece.forEach((block) => {
     fillMatrixCell(block[0], block[1]);
   });
 }
