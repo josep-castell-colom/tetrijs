@@ -1,0 +1,11 @@
+{
+  "scores": [
+    {
+      "id": 1,
+      "player": "Josep",
+      "score": "999999",
+      "level": 1000,
+      "rowsCleared": 1000
+    }
+  ]
+}

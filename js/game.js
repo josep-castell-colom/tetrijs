@@ -31,20 +31,17 @@ import {
   startButton,
   boardHeight,
   blockSize,
-  display,
-  boardDisplay,
 } from "../main.js";
 
 import {
   gameOverSFX,
   levelUpSFX,
-  lineClearSFX,
   mainTheme,
   mainTheme2,
   stackSFX,
-  tetrisSFX,
   titleTheme,
 } from "./media.js";
+import { saveScore, showScores, updateScore } from "./scores.js";
 
 let gameSpeed;
 let updateGameInterval;
@@ -57,7 +54,7 @@ export let nextPhantomPiece;
 export let nextPiece;
 export let holdedPiece;
 let dropDistance;
-let score;
+export let score;
 let level;
 let clearedLines;
 let linesForNextLevel = 10;
@@ -147,7 +144,7 @@ export function keyHandler(key) {
   }
 }
 
-function endGame() {
+async function endGame() {
   mainTheme.pause();
   mainTheme.load();
   mainTheme2.pause();
@@ -160,7 +157,7 @@ function endGame() {
   updateGameInterval = null;
   runningGame = false;
   saveScore();
-  gameOverDisplay.style.display = "flex";
+  await showScores();
   startButton.innerText = "Reset";
   startButton.addEventListener("click", initGame, { once: true });
 }
@@ -191,7 +188,7 @@ function checkEndGame(piece) {
   return false;
 }
 
-function checkLevel(rows) {
+export function checkLevel(rows) {
   clearedLines += rows;
   linesForNextLevel -= rows;
   if (linesForNextLevel === 0) {
@@ -267,35 +264,4 @@ function gravityHandler() {
   stackPiece(currentPiece);
   createPiece();
   createNext();
-}
-
-function saveScore() {
-  const name = prompt("Introduce tu nombre: ");
-  yourScore.innerText = `Your score: ${score}`;
-}
-
-function updateScore(rows) {
-  if (rows) {
-    score += dropDistance * settings.scores.hardDrop;
-    switch (rows) {
-      case 1:
-        score += settings.scores.single * (level + 1);
-        lineClearSFX.play();
-        break;
-      case 2:
-        score += settings.scores.double * (level + 1);
-        lineClearSFX.play();
-        break;
-      case 3:
-        score += settings.scores.triple * (level + 1);
-        lineClearSFX.play();
-        break;
-      case 4:
-        score += settings.scores.tetris * (level + 1);
-        tetrisSFX.play();
-        break;
-    }
-    scoreDisplay.innerText = score;
-  }
-  checkLevel(rows);
 }
