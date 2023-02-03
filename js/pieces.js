@@ -1,11 +1,12 @@
-import { board } from "./board.js";
-import { blockSize, startPosition } from "../main.js";
+import { board, holdBoard, nextBoard } from './board.js';
+import { blockSize, startPosition } from '../main.js';
 
 export class O {
   constructor() {
     this.width = blockSize * 2;
     this.height = blockSize * 2;
-    this.x = startPosition - blockSize;
+    this.startX = startPosition - blockSize;
+    this.x = this.startX;
     this.y = 0;
     this.position = 1;
     this.blocks = [];
@@ -22,10 +23,44 @@ export class O {
     };
     this.update = function () {
       const ctx = board.context;
-      ctx.fillStyle = "yellow";
-      this.blocks.forEach((part) => {
-        ctx.fillRect(this.x + part.x, this.y + part.y, blockSize, blockSize);
-        ctx.strokeRect(this.x + part.x, this.y + part.y, blockSize, blockSize);
+      ctx.fillStyle = 'yellow';
+      ctx.strokeStyle = 'black';
+      this.blocks.forEach(block => {
+        ctx.fillRect(this.x + block.x, this.y + block.y, blockSize, blockSize);
+        ctx.strokeRect(
+          this.x + block.x,
+          this.y + block.y,
+          blockSize,
+          blockSize
+        );
+      });
+    };
+    this.updatePhantom = function () {
+      const ctx = board.context;
+      ctx.strokeStyle = 'yellow';
+      this.blocks.forEach(block => {
+        ctx.strokeRect(
+          this.x + block.x,
+          this.y + block.y,
+          blockSize,
+          blockSize
+        );
+      });
+    };
+    this.updateNext = function () {
+      const ctx = nextBoard.context;
+      ctx.fillStyle = 'yellow';
+      this.blocks.forEach(block => {
+        ctx.fillRect(block.x, block.y, blockSize, blockSize);
+        ctx.strokeRect(block.x, block.y, blockSize, blockSize);
+      });
+    };
+    this.updateHold = function () {
+      const ctx = holdBoard.context;
+      ctx.fillStyle = 'yellow';
+      this.blocks.forEach(block => {
+        ctx.fillRect(block.x, block.y, blockSize, blockSize);
+        ctx.strokeRect(block.x, block.y, blockSize, blockSize);
       });
     };
   }
@@ -35,7 +70,8 @@ export class I {
   constructor() {
     this.width = blockSize * 4;
     this.height = blockSize * 4;
-    this.x = startPosition - blockSize * 2;
+    this.startX = startPosition - blockSize * 2;
+    this.x = this.startX;
     this.y = 0;
     this.position = 1;
     this.blocks = [];
@@ -87,10 +123,44 @@ export class I {
     };
     this.update = function () {
       const ctx = board.context;
-      ctx.fillStyle = "mediumaquamarine";
-      this.blocks.forEach((part) => {
-        ctx.fillRect(this.x + part.x, this.y + part.y, blockSize, blockSize);
-        ctx.strokeRect(this.x + part.x, this.y + part.y, blockSize, blockSize);
+      ctx.fillStyle = 'mediumaquamarine';
+      ctx.strokeStyle = 'black';
+      this.blocks.forEach(block => {
+        ctx.fillRect(this.x + block.x, this.y + block.y, blockSize, blockSize);
+        ctx.strokeRect(
+          this.x + block.x,
+          this.y + block.y,
+          blockSize,
+          blockSize
+        );
+      });
+    };
+    this.updatePhantom = function () {
+      const ctx = board.context;
+      ctx.strokeStyle = 'mediumaquamarine';
+      this.blocks.forEach(block => {
+        ctx.strokeRect(
+          this.x + block.x,
+          this.y + block.y,
+          blockSize,
+          blockSize
+        );
+      });
+    };
+    this.updateNext = function () {
+      const ctx = nextBoard.context;
+      ctx.fillStyle = 'mediumaquamarine';
+      this.blocks.forEach(block => {
+        ctx.fillRect(block.x, block.y, blockSize, blockSize);
+        ctx.strokeRect(block.x, block.y, blockSize, blockSize);
+      });
+    };
+    this.updateHold = function () {
+      const ctx = holdBoard.context;
+      ctx.fillStyle = 'mediumaquamarine';
+      this.blocks.forEach(block => {
+        ctx.fillRect(block.x, block.y, blockSize, blockSize);
+        ctx.strokeRect(block.x, block.y, blockSize, blockSize);
       });
     };
   }
@@ -100,7 +170,8 @@ export class L {
   constructor() {
     this.width = blockSize * 3;
     this.height = blockSize * 3;
-    this.x = startPosition - blockSize * 2;
+    this.startX = startPosition - blockSize * 2;
+    this.x = this.startX;
     this.y = 0;
     this.position = 1;
     this.blocks = [];
@@ -152,10 +223,44 @@ export class L {
     };
     this.update = function () {
       const ctx = board.context;
-      ctx.fillStyle = "orange";
-      this.blocks.forEach((part) => {
-        ctx.fillRect(this.x + part.x, this.y + part.y, blockSize, blockSize);
-        ctx.strokeRect(this.x + part.x, this.y + part.y, blockSize, blockSize);
+      ctx.fillStyle = 'orange';
+      ctx.strokeStyle = 'black';
+      this.blocks.forEach(block => {
+        ctx.fillRect(this.x + block.x, this.y + block.y, blockSize, blockSize);
+        ctx.strokeRect(
+          this.x + block.x,
+          this.y + block.y,
+          blockSize,
+          blockSize
+        );
+      });
+    };
+    this.updatePhantom = function () {
+      const ctx = board.context;
+      ctx.strokeStyle = 'orange';
+      this.blocks.forEach(block => {
+        ctx.strokeRect(
+          this.x + block.x,
+          this.y + block.y,
+          blockSize,
+          blockSize
+        );
+      });
+    };
+    this.updateNext = function () {
+      const ctx = nextBoard.context;
+      ctx.fillStyle = 'orange';
+      this.blocks.forEach(block => {
+        ctx.fillRect(block.x, block.y, blockSize, blockSize);
+        ctx.strokeRect(block.x, block.y, blockSize, blockSize);
+      });
+    };
+    this.updateHold = function () {
+      const ctx = holdBoard.context;
+      ctx.fillStyle = 'orange';
+      this.blocks.forEach(block => {
+        ctx.fillRect(block.x, block.y, blockSize, blockSize);
+        ctx.strokeRect(block.x, block.y, blockSize, blockSize);
       });
     };
   }
@@ -165,7 +270,8 @@ export class J {
   constructor() {
     this.width = blockSize * 3;
     this.height = blockSize * 3;
-    this.x = startPosition - blockSize * 2;
+    this.startX = startPosition - blockSize * 2;
+    this.x = this.startX;
     this.y = 0;
     this.position = 1;
     this.blocks = [];
@@ -217,10 +323,44 @@ export class J {
     };
     this.update = function () {
       const ctx = board.context;
-      ctx.fillStyle = "blue";
-      this.blocks.forEach((part) => {
-        ctx.fillRect(this.x + part.x, this.y + part.y, blockSize, blockSize);
-        ctx.strokeRect(this.x + part.x, this.y + part.y, blockSize, blockSize);
+      ctx.fillStyle = 'blue';
+      ctx.strokeStyle = 'black';
+      this.blocks.forEach(block => {
+        ctx.fillRect(this.x + block.x, this.y + block.y, blockSize, blockSize);
+        ctx.strokeRect(
+          this.x + block.x,
+          this.y + block.y,
+          blockSize,
+          blockSize
+        );
+      });
+    };
+    this.updatePhantom = function () {
+      const ctx = board.context;
+      ctx.strokeStyle = 'blue';
+      this.blocks.forEach(block => {
+        ctx.strokeRect(
+          this.x + block.x,
+          this.y + block.y,
+          blockSize,
+          blockSize
+        );
+      });
+    };
+    this.updateNext = function () {
+      const ctx = nextBoard.context;
+      ctx.fillStyle = 'blue';
+      this.blocks.forEach(block => {
+        ctx.fillRect(block.x, block.y, blockSize, blockSize);
+        ctx.strokeRect(block.x, block.y, blockSize, blockSize);
+      });
+    };
+    this.updateHold = function () {
+      const ctx = holdBoard.context;
+      ctx.fillStyle = 'blue';
+      this.blocks.forEach(block => {
+        ctx.fillRect(block.x, block.y, blockSize, blockSize);
+        ctx.strokeRect(block.x, block.y, blockSize, blockSize);
       });
     };
   }
@@ -230,7 +370,8 @@ export class S {
   constructor() {
     this.width = blockSize * 3;
     this.height = blockSize * 3;
-    this.x = startPosition - blockSize * 2;
+    this.startX = startPosition - blockSize * 2;
+    this.x = this.startX;
     this.y = 0;
     this.position = 1;
     this.blocks = [];
@@ -282,10 +423,44 @@ export class S {
     };
     this.update = function () {
       const ctx = board.context;
-      ctx.fillStyle = "green";
-      this.blocks.forEach((part) => {
-        ctx.fillRect(this.x + part.x, this.y + part.y, blockSize, blockSize);
-        ctx.strokeRect(this.x + part.x, this.y + part.y, blockSize, blockSize);
+      ctx.fillStyle = 'green';
+      ctx.strokeStyle = 'black';
+      this.blocks.forEach(block => {
+        ctx.fillRect(this.x + block.x, this.y + block.y, blockSize, blockSize);
+        ctx.strokeRect(
+          this.x + block.x,
+          this.y + block.y,
+          blockSize,
+          blockSize
+        );
+      });
+    };
+    this.updatePhantom = function () {
+      const ctx = board.context;
+      ctx.strokeStyle = 'green';
+      this.blocks.forEach(block => {
+        ctx.strokeRect(
+          this.x + block.x,
+          this.y + block.y,
+          blockSize,
+          blockSize
+        );
+      });
+    };
+    this.updateNext = function () {
+      const ctx = nextBoard.context;
+      ctx.fillStyle = 'green';
+      this.blocks.forEach(block => {
+        ctx.fillRect(block.x, block.y, blockSize, blockSize);
+        ctx.strokeRect(block.x, block.y, blockSize, blockSize);
+      });
+    };
+    this.updateHold = function () {
+      const ctx = holdBoard.context;
+      ctx.fillStyle = 'green';
+      this.blocks.forEach(block => {
+        ctx.fillRect(block.x, block.y, blockSize, blockSize);
+        ctx.strokeRect(block.x, block.y, blockSize, blockSize);
       });
     };
   }
@@ -295,7 +470,8 @@ export class Z {
   constructor() {
     this.width = blockSize * 3;
     this.height = blockSize * 3;
-    this.x = startPosition - blockSize * 2;
+    this.startX = startPosition - blockSize * 2;
+    this.x = this.startX;
     this.y = 0;
     this.position = 1;
     this.blocks = [];
@@ -347,10 +523,44 @@ export class Z {
     };
     this.update = function () {
       const ctx = board.context;
-      ctx.fillStyle = "red";
-      this.blocks.forEach((part) => {
-        ctx.fillRect(this.x + part.x, this.y + part.y, blockSize, blockSize);
-        ctx.strokeRect(this.x + part.x, this.y + part.y, blockSize, blockSize);
+      ctx.fillStyle = 'red';
+      ctx.strokeStyle = 'black';
+      this.blocks.forEach(block => {
+        ctx.fillRect(this.x + block.x, this.y + block.y, blockSize, blockSize);
+        ctx.strokeRect(
+          this.x + block.x,
+          this.y + block.y,
+          blockSize,
+          blockSize
+        );
+      });
+    };
+    this.updatePhantom = function () {
+      const ctx = board.context;
+      ctx.strokeStyle = 'red';
+      this.blocks.forEach(block => {
+        ctx.strokeRect(
+          this.x + block.x,
+          this.y + block.y,
+          blockSize,
+          blockSize
+        );
+      });
+    };
+    this.updateNext = function () {
+      const ctx = nextBoard.context;
+      ctx.fillStyle = 'red';
+      this.blocks.forEach(block => {
+        ctx.fillRect(block.x, block.y, blockSize, blockSize);
+        ctx.strokeRect(block.x, block.y, blockSize, blockSize);
+      });
+    };
+    this.updateHold = function () {
+      const ctx = holdBoard.context;
+      ctx.fillStyle = 'red';
+      this.blocks.forEach(block => {
+        ctx.fillRect(block.x, block.y, blockSize, blockSize);
+        ctx.strokeRect(block.x, block.y, blockSize, blockSize);
       });
     };
   }
@@ -360,7 +570,8 @@ export class T {
   constructor() {
     this.width = blockSize * 3;
     this.height = blockSize * 3;
-    this.x = startPosition - blockSize * 2;
+    this.startX = startPosition - blockSize * 2;
+    this.x = this.startX;
     this.y = 0;
     this.position = 1;
     this.blocks = [];
@@ -412,10 +623,44 @@ export class T {
     };
     this.update = function () {
       const ctx = board.context;
-      ctx.fillStyle = "purple";
-      this.blocks.forEach((part) => {
-        ctx.fillRect(this.x + part.x, this.y + part.y, blockSize, blockSize);
-        ctx.strokeRect(this.x + part.x, this.y + part.y, blockSize, blockSize);
+      ctx.fillStyle = 'purple';
+      ctx.strokeStyle = 'black';
+      this.blocks.forEach(block => {
+        ctx.fillRect(this.x + block.x, this.y + block.y, blockSize, blockSize);
+        ctx.strokeRect(
+          this.x + block.x,
+          this.y + block.y,
+          blockSize,
+          blockSize
+        );
+      });
+    };
+    this.updatePhantom = function () {
+      const ctx = board.context;
+      ctx.strokeStyle = 'purple';
+      this.blocks.forEach(block => {
+        ctx.strokeRect(
+          this.x + block.x,
+          this.y + block.y,
+          blockSize,
+          blockSize
+        );
+      });
+    };
+    this.updateNext = function () {
+      const ctx = nextBoard.context;
+      ctx.fillStyle = 'purple';
+      this.blocks.forEach(block => {
+        ctx.fillRect(block.x, block.y, blockSize, blockSize);
+        ctx.strokeRect(block.x, block.y, blockSize, blockSize);
+      });
+    };
+    this.updateHold = function () {
+      const ctx = holdBoard.context;
+      ctx.fillStyle = 'purple';
+      this.blocks.forEach(block => {
+        ctx.fillRect(block.x, block.y, blockSize, blockSize);
+        ctx.strokeRect(block.x, block.y, blockSize, blockSize);
       });
     };
   }

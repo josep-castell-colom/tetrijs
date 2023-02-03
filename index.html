@@ -4,12 +4,42 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tetrijs</title>
+    <title>TETR!JS</title>
     <link rel="stylesheet" href="style.css" />
     <script src="main.js" type="module" defer></script>
   </head>
   <body>
-    <div id="app"></div>
-    <button id="start"></button>
+    <div id="app">
+      <h1 id="title">TETR<em>i</em>JS</h1>
+      <div id="info-left" class="info-display">
+        <div id="pane" class="margin-right"></div>
+        <div class="margin-right margin-top"><span>Level:</span></div>
+        <div id="level" class="margin-top"></div>
+        <div class="margin-right"><span>Lines:</span></div>
+        <div id="lines" class="margin-top"></div>
+      </div>
+      <div id="display"></div>
+      <div id="game-over">
+        <h2>Game Over</h2>
+        <span id="your-score">Your score: 000000</span>
+        <div id="top-scores">
+          <h3>Top scores</h3>
+          <span>Josep --- 999999</span><span>Aina --- 999998</span><span></span
+          ><span></span><span></span>
+        </div>
+      </div>
+      <div id="info-right" class="info-display">
+        <div class="margin-left"><span>Score:</span></div>
+        <div id="score" class="margin-top"></div>
+        <div class="margin-left margin-top"><span>Next:</span></div>
+        <div id="next"></div>
+        <div class="margin-left margin-top"><span>Hold:</span></div>
+        <div id="hold"></div>
+      </div>
+    </div>
+    <div id="interface">
+      <span id="start" class="interface-button"></span>
+      <span id="options" class="interface-button">Options</span>
+    </div>
   </body>
 </html>
