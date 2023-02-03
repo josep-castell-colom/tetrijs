@@ -187,8 +187,9 @@ function canChangePosition(piece) {
   if (
     checkNegativeLeftCollide(futurePiece) &&
     checkNegativeRightCollide(futurePiece)
-  )
+  ) {
     return false;
+  }
   if (checkNegativeLeftCollide(futurePiece)) {
     currentPiece.x += blockSize;
   }
@@ -199,16 +200,16 @@ function canChangePosition(piece) {
 }
 
 function checkNegativeRightCollide(piece) {
-  if (piece.x + piece.width > boardWidth) return true;
+  if (piece.absoluteX + piece.width > boardWidth) return true;
 
   for (let i = 0; i < board.stack.length; i++) {
-    if (board.stack[i].x > piece.x) {
+    if (board.stack[i].x > piece.absoluteX) {
       for (let j = 0; j < board.stack[i].blocks.length; j++) {
         for (let k = 0; k < piece.blocks.length; k++) {
           if (
             piece.y + piece.blocks[k].y ===
               board.stack[i].y + board.stack[i].blocks[j].y &&
-            piece.x + piece.width >
+            piece.absoluteX + piece.width >
               board.stack[i].x + board.stack[i].blocks[j].x
           ) {
             return true;
@@ -221,16 +222,17 @@ function checkNegativeRightCollide(piece) {
 }
 
 function checkNegativeLeftCollide(piece) {
-  if (piece.x < 0) return true;
+  if (piece.absoluteX < 0) return true;
 
   for (let i = 0; i < board.stack.length; i++) {
-    if (board.stack[i].x < piece.x) {
+    if (board.stack[i].x < piece.absoluteX) {
       for (let j = 0; j < board.stack[i].blocks.length; j++) {
         for (let k = 0; k < piece.blocks.length; k++) {
           if (
             piece.y + piece.blocks[k].y ===
               board.stack[i].y + board.stack[i].blocks[j].y &&
-            piece.x < board.stack[i].x + board.stack[i].blocks[j].x + blockSize
+            piece.absoluteX <
+              board.stack[i].x + board.stack[i].blocks[j].x + blockSize
           ) {
             return true;
           }

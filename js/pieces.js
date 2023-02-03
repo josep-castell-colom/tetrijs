@@ -3,14 +3,19 @@ import { blockSize, startPosition } from '../main.js';
 
 export class O {
   constructor() {
+    this.box = blockSize * 2;
     this.width = blockSize * 2;
     this.height = blockSize * 2;
     this.startX = startPosition - blockSize;
     this.x = this.startX;
     this.y = 0;
+    this.absoluteX;
+    this.absoluteY;
     this.position = 1;
     this.blocks = [];
     this.setPosition = function () {
+      this.absoluteX = this.x;
+      this.absoluteY = this.y;
       this.blocks = [
         { x: 0, y: 0 },
         { x: blockSize, y: 0 },
@@ -68,16 +73,23 @@ export class O {
 
 export class I {
   constructor() {
+    this.box = blockSize * 4;
     this.width = blockSize * 4;
-    this.height = blockSize * 4;
+    this.height = blockSize * 1;
     this.startX = startPosition - blockSize * 2;
     this.x = this.startX;
     this.y = 0;
+    this.absoluteX;
+    this.absoluteY;
     this.position = 1;
     this.blocks = [];
     this.setPosition = function () {
       switch (this.position) {
         case 1:
+          this.absoluteX = this.x;
+          this.absoluteY = this.y + blockSize;
+          this.width = blockSize * 4;
+          this.height = blockSize * 1;
           this.blocks = [
             { x: 0, y: blockSize },
             { x: blockSize, y: blockSize },
@@ -86,6 +98,10 @@ export class I {
           ];
           break;
         case 2:
+          this.width = blockSize * 1;
+          this.height = blockSize * 4;
+          this.absoluteX = this.x + blockSize * 2;
+          this.absoluteY = this.y;
           this.blocks = [
             { x: blockSize * 2, y: 0 },
             { x: blockSize * 2, y: blockSize },
@@ -94,6 +110,10 @@ export class I {
           ];
           break;
         case 3:
+          this.width = blockSize * 4;
+          this.height = blockSize * 1;
+          this.absoluteX = this.x;
+          this.absoluteY = this.y + blockSize * 2;
           this.blocks = [
             { x: 0, y: blockSize * 2 },
             { x: blockSize, y: blockSize * 2 },
@@ -102,6 +122,10 @@ export class I {
           ];
           break;
         case 4:
+          this.width = blockSize * 1;
+          this.height = blockSize * 4;
+          this.absoluteX = this.x + blockSize;
+          this.absoluteY = this.y;
           this.blocks = [
             { x: blockSize, y: 0 },
             { x: blockSize, y: blockSize },
@@ -168,16 +192,23 @@ export class I {
 
 export class L {
   constructor() {
+    this.box = blockSize * 3;
     this.width = blockSize * 3;
-    this.height = blockSize * 3;
+    this.height = blockSize * 2;
     this.startX = startPosition - blockSize * 2;
     this.x = this.startX;
     this.y = 0;
+    this.absoluteX;
+    this.absoluteY;
     this.position = 1;
     this.blocks = [];
     this.setPosition = function () {
       switch (this.position) {
         case 1:
+          this.width = blockSize * 3;
+          this.height = blockSize * 2;
+          this.absoluteX = this.x;
+          this.absoluteY = this.y;
           this.blocks = [
             { x: 0, y: blockSize },
             { x: blockSize, y: blockSize },
@@ -186,6 +217,10 @@ export class L {
           ];
           break;
         case 2:
+          this.width = blockSize * 2;
+          this.height = blockSize * 3;
+          this.absoluteX = this.x + blockSize;
+          this.absoluteY = this.y;
           this.blocks = [
             { x: blockSize, y: 0 },
             { x: blockSize, y: blockSize },
@@ -194,6 +229,10 @@ export class L {
           ];
           break;
         case 3:
+          this.width = blockSize * 3;
+          this.height = blockSize * 2;
+          this.absoluteX = this.x;
+          this.absoluteY = this.y + blockSize;
           this.blocks = [
             { x: 0, y: blockSize * 2 },
             { x: 0, y: blockSize },
@@ -202,6 +241,10 @@ export class L {
           ];
           break;
         case 4:
+          this.width = blockSize * 2;
+          this.height = blockSize * 3;
+          this.absoluteX = this.x;
+          this.absoluteY = this.y;
           this.blocks = [
             { x: 0, y: 0 },
             { x: blockSize, y: 0 },
@@ -268,16 +311,23 @@ export class L {
 
 export class J {
   constructor() {
-    this.width = blockSize * 3;
+    this.box = blockSize * 3;
+    this.width = blockSize * 2;
     this.height = blockSize * 3;
     this.startX = startPosition - blockSize * 2;
     this.x = this.startX;
     this.y = 0;
+    this.absoluteX;
+    this.absoluteY;
     this.position = 1;
     this.blocks = [];
     this.setPosition = function () {
       switch (this.position) {
         case 1:
+          this.width = blockSize * 2;
+          this.height = blockSize * 3;
+          this.absoluteX = this.x;
+          this.absoluteY = this.y;
           this.blocks = [
             { x: 0, y: 0 },
             { x: 0, y: blockSize },
@@ -286,6 +336,10 @@ export class J {
           ];
           break;
         case 2:
+          this.width = blockSize * 3;
+          this.height = blockSize * 2;
+          this.absoluteX = this.x + blockSize;
+          this.absoluteY = this.y;
           this.blocks = [
             { x: blockSize * 2, y: 0 },
             { x: blockSize, y: 0 },
@@ -294,6 +348,10 @@ export class J {
           ];
           break;
         case 3:
+          this.width = blockSize * 2;
+          this.height = blockSize * 3;
+          this.absoluteX = this.x;
+          this.absoluteY = this.y + blockSize;
           this.blocks = [
             { x: 0, y: blockSize },
             { x: blockSize, y: blockSize },
@@ -302,6 +360,10 @@ export class J {
           ];
           break;
         case 4:
+          this.width = blockSize * 3;
+          this.height = blockSize * 2;
+          this.absoluteX = this.x;
+          this.absoluteY = this.y;
           this.blocks = [
             { x: blockSize, y: 0 },
             { x: blockSize, y: blockSize },
@@ -368,16 +430,23 @@ export class J {
 
 export class S {
   constructor() {
+    this.box = blockSize * 3;
     this.width = blockSize * 3;
     this.height = blockSize * 3;
     this.startX = startPosition - blockSize * 2;
     this.x = this.startX;
     this.y = 0;
+    this.absoluteX;
+    this.absoluteY;
     this.position = 1;
     this.blocks = [];
     this.setPosition = function () {
       switch (this.position) {
         case 1:
+          this.width = blockSize * 3;
+          this.height = blockSize * 2;
+          this.absoluteX = this.x;
+          this.absoluteY = this.y;
           this.blocks = [
             { x: 0, y: blockSize },
             { x: blockSize, y: blockSize },
@@ -386,6 +455,10 @@ export class S {
           ];
           break;
         case 2:
+          this.width = blockSize * 2;
+          this.height = blockSize * 3;
+          this.absoluteX = this.x + blockSize;
+          this.absoluteY = this.y;
           this.blocks = [
             { x: blockSize, y: 0 },
             { x: blockSize, y: blockSize },
@@ -394,6 +467,10 @@ export class S {
           ];
           break;
         case 3:
+          this.width = blockSize * 3;
+          this.height = blockSize * 2;
+          this.absoluteX = this.x;
+          this.absoluteY = this.y + blockSize;
           this.blocks = [
             { x: blockSize * 2, y: blockSize },
             { x: blockSize, y: blockSize },
@@ -402,6 +479,10 @@ export class S {
           ];
           break;
         case 4:
+          this.width = blockSize * 2;
+          this.height = blockSize * 3;
+          this.absoluteX = this.x;
+          this.absoluteY = this.y;
           this.blocks = [
             { x: 0, y: 0 },
             { x: 0, y: blockSize },
@@ -468,16 +549,23 @@ export class S {
 
 export class Z {
   constructor() {
+    this.box = blockSize * 3;
     this.width = blockSize * 3;
     this.height = blockSize * 3;
     this.startX = startPosition - blockSize * 2;
     this.x = this.startX;
     this.y = 0;
+    this.absoluteX;
+    this.absoluteY;
     this.position = 1;
     this.blocks = [];
     this.setPosition = function () {
       switch (this.position) {
         case 1:
+          this.width = blockSize * 3;
+          this.height = blockSize * 2;
+          this.absoluteX = this.x;
+          this.absoluteY = this.y;
           this.blocks = [
             { x: 0, y: 0 },
             { x: blockSize, y: 0 },
@@ -486,6 +574,10 @@ export class Z {
           ];
           break;
         case 2:
+          this.width = blockSize * 2;
+          this.height = blockSize * 3;
+          this.absoluteX = this.x + blockSize;
+          this.absoluteY = this.y;
           this.blocks = [
             { x: blockSize * 2, y: 0 },
             { x: blockSize * 2, y: blockSize },
@@ -494,6 +586,10 @@ export class Z {
           ];
           break;
         case 3:
+          this.width = blockSize * 3;
+          this.height = blockSize * 2;
+          this.absoluteX = this.x;
+          this.absoluteY = this.y + blockSize;
           this.blocks = [
             { x: 0, y: blockSize },
             { x: blockSize, y: blockSize },
@@ -502,6 +598,10 @@ export class Z {
           ];
           break;
         case 4:
+          this.width = blockSize * 2;
+          this.height = blockSize * 3;
+          this.absoluteX = this.x;
+          this.absoluteY = this.y;
           this.blocks = [
             { x: blockSize, y: 0 },
             { x: blockSize, y: blockSize },
@@ -568,16 +668,23 @@ export class Z {
 
 export class T {
   constructor() {
+    this.box = blockSize * 3;
     this.width = blockSize * 3;
     this.height = blockSize * 3;
     this.startX = startPosition - blockSize * 2;
     this.x = this.startX;
     this.y = 0;
+    this.absoluteX;
+    this.absoluteY;
     this.position = 1;
     this.blocks = [];
     this.setPosition = function () {
       switch (this.position) {
         case 1:
+          this.width = blockSize * 3;
+          this.height = blockSize * 2;
+          this.absoluteX = this.x;
+          this.absoluteY = this.y;
           this.blocks = [
             { x: 0, y: blockSize },
             { x: blockSize, y: blockSize },
@@ -586,6 +693,10 @@ export class T {
           ];
           break;
         case 2:
+          this.width = blockSize * 2;
+          this.height = blockSize * 3;
+          this.absoluteX = this.x + blockSize;
+          this.absoluteY = this.y;
           this.blocks = [
             { x: blockSize, y: 0 },
             { x: blockSize, y: blockSize },
@@ -594,6 +705,10 @@ export class T {
           ];
           break;
         case 3:
+          this.width = blockSize * 3;
+          this.height = blockSize * 2;
+          this.absoluteX = this.x;
+          this.absoluteY = this.y + blockSize;
           this.blocks = [
             { x: 0, y: blockSize },
             { x: blockSize, y: blockSize },
@@ -602,6 +717,10 @@ export class T {
           ];
           break;
         case 4:
+          this.width = blockSize * 2;
+          this.height = blockSize * 3;
+          this.absoluteX = this.x;
+          this.absoluteY = this.y;
           this.blocks = [
             { x: blockSize, y: 0 },
             { x: blockSize, y: blockSize },
