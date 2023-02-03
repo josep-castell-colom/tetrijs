@@ -27,6 +27,55 @@
       "level": 7,
       "clearedLines": 77,
       "id": 5
+    },
+    {
+      "player": "Josep",
+      "score": 107484,
+      "level": 11,
+      "clearedLines": 111,
+      "id": 6
+    },
+    {
+      "player": "josep",
+      "score": 78136,
+      "level": 10,
+      "clearedLines": 100,
+      "id": 7
+    },
+    {
+      "player": " josep",
+      "score": 6550,
+      "level": 2,
+      "clearedLines": 26,
+      "id": 8
+    },
+    {
+      "player": "aina",
+      "score": 9546,
+      "level": 3,
+      "clearedLines": 34,
+      "id": 9
+    },
+    {
+      "player": "aina ",
+      "score": 45760,
+      "level": 7,
+      "clearedLines": 79,
+      "id": 10
+    },
+    {
+      "player": "ainacaca ",
+      "score": 34268,
+      "level": 7,
+      "clearedLines": 70,
+      "id": 11
+    },
+    {
+      "player": "Josep",
+      "score": 41722,
+      "level": 7,
+      "clearedLines": 72,
+      "id": 12
     }
   ]
 }
