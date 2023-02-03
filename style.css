@@ -190,3 +190,17 @@ body {
   text-align: justify;
   width: 100%;
 }
+
+#pause {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#pause span {
+  font-size: 3rem;
+  color: orangered;
+  background-color: white;
+}

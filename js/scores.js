@@ -17,7 +17,12 @@ export function setCurrentScore(score) {
 }
 
 async function getScores() {
-  return await fetchScores();
+  let scores = await fetchScores();
+  scores.sort((a, b) => b.score - a.score);
+  if (scores.length > 10) {
+    scores = scores.slice(0, 10);
+  }
+  return scores;
 }
 
 export async function saveScore() {
@@ -35,7 +40,6 @@ export async function saveScore() {
 }
 
 export function updateScore(rows) {
-  console.log(currentScore);
   if (rows) {
     currentScore += dropDistance * settings.scores.hardDrop;
     console.log(currentScore);
@@ -68,9 +72,18 @@ export function updateScore(rows) {
 
 export async function showScores() {
   const scores = await getScores();
-  scores.forEach(score => {
+  topScoresDisplay.innerHTML = '';
+  scores.forEach(e => {
     const span = document.createElement('span');
-    span.innerText = `${score.player} --- ${score.score}`;
+    const name = document.createElement('span');
+    const separator = document.createElement('span');
+    const score = document.createElement('span');
+    name.innerText = e.player;
+    separator.innerText = '---';
+    score.innerText = e.score;
+    span.appendChild(name);
+    span.appendChild(separator);
+    span.appendChild(score);
     topScoresDisplay.appendChild(span);
   });
   gameOverDisplay.style.display = 'flex';

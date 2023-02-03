@@ -4,11 +4,29 @@
       "id": 1,
       "player": "Josep",
       "score": "999999",
-      "level": 1000,
+      "level": 100,
       "clearedLines": 1000
     },
     {
+      "player": " Antonio Flores",
+      "score": 14120,
+      "level": 4,
+      "clearedLines": 40,
       "id": 2
+    },
+    {
+      "player": "Josepe",
+      "score": 82224,
+      "level": 10,
+      "clearedLines": 104,
+      "id": 3
+    },
+    {
+      "player": "DC",
+      "score": 43198,
+      "level": 7,
+      "clearedLines": 77,
+      "id": 5
     }
   ]
 }

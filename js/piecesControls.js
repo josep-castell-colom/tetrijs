@@ -1,4 +1,4 @@
-import { O, I, L, J, S, Z, T } from "./pieces.js";
+import { O, I, L, J, S, Z, T } from './pieces.js';
 import {
   runningGame,
   currentPiece,
@@ -12,10 +12,10 @@ import {
   nextPiece,
   stackPiece,
   nextPhantomPiece,
-} from "./game.js";
-import { blockSize, boardHeight, boardWidth } from "../main.js";
-import { board, holdBoard, nextBoard } from "./board.js";
-import { holdSFX } from "./media.js";
+} from './game.js';
+import { blockSize, boardHeight, boardWidth } from '../main.js';
+import { board, holdBoard, nextBoard } from './board.js';
+import { holdSFX } from './media.js';
 
 export function createPiece() {
   if (!runningGame) return;
@@ -99,7 +99,7 @@ export function createNext() {
 }
 
 export function deleteBlock(blocks, block) {
-  return blocks.filter((e) => e != block);
+  return blocks.filter(e => e != block);
 }
 
 export function canMoveRight(piece) {
@@ -249,7 +249,7 @@ export function toBottom(piece, type) {
   while (canMoveDown(piece)) {
     moveDown(piece);
   }
-  if (type === "current") {
+  if (type === 'current') {
     stackPiece(piece);
     createPiece();
     createNext();
@@ -308,7 +308,7 @@ export function phantomHandler() {
 }
 
 export function getCoordenates(piece) {
-  return piece.blocks.map((part) => [
+  return piece.blocks.map(part => [
     (piece.x + part.x) / blockSize,
     (piece.y + part.y) / blockSize,
   ]);

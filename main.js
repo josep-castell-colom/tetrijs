@@ -6,6 +6,7 @@ export const scoreDisplay = document.getElementById('score');
 export const levelDisplay = document.getElementById('level');
 export const linesDisplay = document.getElementById('lines');
 export const gameOverDisplay = document.getElementById('game-over');
+export const pauseDisplay = document.getElementById('pause');
 export const topScoresDisplay = document.getElementById('top-scores');
 export const yourScore = document.getElementById('your-score');
 export const nextDisplay = document.getElementById('next');

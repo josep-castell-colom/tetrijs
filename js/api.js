@@ -8,8 +8,13 @@ export function fetchScores() {
 }
 
 export async function postScore(data) {
-  fetch(`${url}scores`, {
+  await fetch(`${url}scores`, {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
     body: JSON.stringify(data),
-  }).catch(err => console.log(err));
+  })
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
 }

@@ -31,7 +31,7 @@ import {
   startButton,
   boardHeight,
   blockSize,
-  boardDisplay,
+  pauseDisplay,
 } from '../main.js';
 
 import {
@@ -55,6 +55,8 @@ let updateGameInterval;
 let gravityInterval;
 
 export let runningGame = false;
+let pausedGame = false;
+
 export let currentPiece;
 export let phantomPiece;
 export let nextPhantomPiece;
@@ -120,10 +122,16 @@ function startGame() {
   titleTheme.pause();
   titleTheme.load();
   mainTheme.play();
+  startButton.innerText = 'Pause';
+  startButton.addEventListener('click', pauseHandler);
 }
 
 export function keyHandler(key) {
   if (!runningGame) return;
+  if (key === 'p') {
+    pauseHandler();
+  }
+  if (pausedGame) return;
   if (key === 'ArrowRight') {
     moveRight();
     phantomHandler();
@@ -163,9 +171,10 @@ async function endGame() {
   clearInterval(updateGameInterval);
   updateGameInterval = null;
   runningGame = false;
-  saveScore();
+  await saveScore();
   await showScores();
   startButton.innerText = 'Reset';
+  startButton.removeEventListener('click', pauseHandler);
   startButton.addEventListener('click', initGame, { once: true });
 }
 
@@ -210,7 +219,7 @@ export function checkLevel(rows) {
     linesForNextLevel = 10 + linesForNextLevel;
     increaseSpeed();
   }
-  if (level === 1) {
+  if (level === 10) {
     mainTheme.pause();
     mainTheme.load();
     mainTheme2.play();
@@ -271,4 +280,30 @@ function gravityHandler() {
   stackPiece(currentPiece);
   createPiece();
   createNext();
+}
+
+function pauseGame() {
+  clearInterval(gravityInterval);
+  gravityInterval = null;
+  clearInterval(updateGameInterval);
+  updateGameInterval = null;
+  pausedGame = true;
+  startButton.innerText = 'Resume';
+  pauseDisplay.style.display = 'block';
+}
+
+function unpauseGame() {
+  gravityInterval = setInterval(gravityHandler, gameSpeed);
+  updateGameInterval = setInterval(updateGameArea, 30);
+  pausedGame = false;
+  startButton.innerText = 'Pause';
+  pauseDisplay.style.display = 'none';
+}
+
+function pauseHandler() {
+  if (pausedGame) {
+    unpauseGame();
+  } else {
+    pauseGame();
+  }
 }
