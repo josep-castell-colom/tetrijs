@@ -1,4 +1,6 @@
-import { board, holdBoard, nextBoard, paneBoard } from "./board.js";
+import { board, holdBoard, nextBoard, paneBoard } from './board.js';
+import { settings } from '../settings.js';
+
 import {
   createPiece,
   createNext,
@@ -12,8 +14,7 @@ import {
   getCoordenates,
   deleteBlock,
   hold,
-} from "./piecesControls.js";
-import { settings } from "../settings.js";
+} from './piecesControls.js';
 
 import {
   checkFilledRow,
@@ -21,7 +22,7 @@ import {
   initMatrix,
   matrix,
   resetMatrix,
-} from "./matrix.js";
+} from './matrix.js';
 
 import {
   scoreDisplay,
@@ -32,7 +33,7 @@ import {
   boardHeight,
   blockSize,
   pauseDisplay,
-} from "../main.js";
+} from '../main.js';
 
 import {
   gameOverSFX,
@@ -41,14 +42,15 @@ import {
   mainTheme2,
   stackSFX,
   titleTheme,
-} from "./media.js";
+} from './media.js';
+
 import {
   currentScore,
   saveScore,
   setCurrentScore,
   showScores,
   updateScore,
-} from "./scores.js";
+} from './scores.js';
 
 let gameSpeed;
 let updateGameInterval;
@@ -104,10 +106,10 @@ export function initGame() {
   scoreDisplay.innerText = currentScore;
   levelDisplay.innerText = level;
   linesDisplay.innerText = clearedLines;
-  gameOverDisplay.style.display = "none";
-  startButton.innerText = "Start!";
-  startButton.addEventListener("click", startGame, { once: true });
-  document.getElementById("board").style.backgroundColor = "#333";
+  gameOverDisplay.style.display = 'none';
+  startButton.innerText = 'Start!';
+  startButton.addEventListener('click', startGame, { once: true });
+  document.getElementById('board').style.backgroundColor = '#333';
   titleTheme.play();
 }
 
@@ -125,44 +127,56 @@ function startGame() {
   titleTheme.pause();
   titleTheme.load();
   mainTheme.play();
-  startButton.innerText = "Pause";
-  startButton.addEventListener("click", pauseHandler);
+  startButton.innerText = 'Pause';
+  startButton.addEventListener('click', pauseHandler);
+}
+
+function updateGameArea() {
+  if (runningGame) {
+    board.clear();
+    board.stack.forEach(piece => piece.update());
+    phantomPiece.setPosition();
+    phantomHandler();
+    phantomPiece.updatePhantom();
+    currentPiece.setPosition();
+    currentPiece.update();
+  }
 }
 
 export function keyHandler(key) {
   if (initializedGame) {
-    if (key === "s") {
+    if (key === 's') {
       startGame();
     }
   }
   if (!runningGame) return;
-  if (key === "p") {
+  if (key === 'p') {
     pauseHandler();
   }
   if (pausedGame) return;
-  if (key === "ArrowRight") {
+  if (key === 'ArrowRight') {
     moveRight();
     phantomHandler();
   }
-  if (key === "ArrowLeft") {
+  if (key === 'ArrowLeft') {
     moveLeft();
     phantomHandler();
   }
-  if (key === "ArrowDown") {
+  if (key === 'ArrowDown') {
     if (canMoveDown(currentPiece)) {
       moveDown(currentPiece);
       phantomHandler();
     }
   }
-  if (key === "ArrowUp") {
+  if (key === 'ArrowUp') {
     changePosition();
     phantomHandler();
   }
-  if (key === " ") {
+  if (key === ' ') {
     dropDistance = (boardHeight - currentPiece.y) / blockSize;
-    toBottom(currentPiece, "current");
+    toBottom(currentPiece, 'current');
   }
-  if (key === "d") {
+  if (key === 'd') {
     hold();
   }
 }
@@ -173,7 +187,7 @@ async function endGame() {
   mainTheme2.pause();
   mainTheme2.load();
   gameOverSFX.play();
-  console.log("Ah beneit! Has perdut!");
+  console.log('Ah beneit! Has perdut!');
   clearInterval(gravityInterval);
   gravityInterval = null;
   clearInterval(updateGameInterval);
@@ -181,9 +195,9 @@ async function endGame() {
   runningGame = false;
   await saveScore();
   await showScores();
-  startButton.innerText = "Reset";
-  startButton.removeEventListener("click", pauseHandler);
-  startButton.addEventListener("click", initGame, { once: true });
+  startButton.innerText = 'Reset';
+  startButton.removeEventListener('click', pauseHandler);
+  startButton.addEventListener('click', initGame, { once: true });
 }
 
 export function stackPiece(piece) {
@@ -231,7 +245,7 @@ export function checkLevel(rows) {
     mainTheme.pause();
     mainTheme.load();
     mainTheme2.play();
-    document.getElementById("board").style.backgroundColor = "#555";
+    document.getElementById('board').style.backgroundColor = '#555';
   }
   levelDisplay.innerText = level;
   linesDisplay.innerText = clearedLines;
@@ -245,8 +259,8 @@ function increaseSpeed() {
 }
 
 function updateClearRow(y) {
-  board.stack.forEach((piece) => {
-    piece.blocks.forEach((block) => {
+  board.stack.forEach(piece => {
+    piece.blocks.forEach(block => {
       if (piece.y + block.y === y * blockSize) {
         piece.blocks = deleteBlock(piece.blocks, block);
       } else if (piece.y + block.y < y * blockSize) {
@@ -254,18 +268,6 @@ function updateClearRow(y) {
       }
     });
   });
-}
-
-function updateGameArea() {
-  if (runningGame) {
-    board.clear();
-    board.stack.forEach((piece) => piece.update());
-    phantomPiece.setPosition();
-    phantomHandler();
-    phantomPiece.updatePhantom();
-    currentPiece.setPosition();
-    currentPiece.update();
-  }
 }
 
 function setGravity() {
@@ -297,16 +299,16 @@ function pauseGame() {
   clearInterval(updateGameInterval);
   updateGameInterval = null;
   pausedGame = true;
-  startButton.innerText = "Resume";
-  pauseDisplay.style.display = "block";
+  startButton.innerText = 'Resume';
+  pauseDisplay.style.display = 'block';
 }
 
 function unpauseGame() {
   gravityInterval = setInterval(gravityHandler, gameSpeed);
   updateGameInterval = setInterval(updateGameArea, 30);
   pausedGame = false;
-  startButton.innerText = "Pause";
-  pauseDisplay.style.display = "none";
+  startButton.innerText = 'Pause';
+  pauseDisplay.style.display = 'none';
 }
 
 function pauseHandler() {

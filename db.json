@@ -76,6 +76,20 @@
       "level": 7,
       "clearedLines": 72,
       "id": 12
+    },
+    {
+      "player": "Josep Clase",
+      "score": 18492,
+      "level": 4,
+      "clearedLines": 44,
+      "id": 13
+    },
+    {
+      "player": "Jaume",
+      "score": 84512,
+      "level": 11,
+      "clearedLines": 111,
+      "id": 14
     }
   ]
 }
